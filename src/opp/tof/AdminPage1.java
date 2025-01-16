@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 import login.Login;
 
 public class AdminPage1 extends javax.swing.JFrame {
-
+    Profile p;
     static DefaultTableModel h;
     static void viewData(String name, String user) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -41,6 +41,15 @@ public class AdminPage1 extends javax.swing.JFrame {
         settingTable();
         viewData("");
         viewDataProduk("");
+        // Menentukan mode pemilihan di tabel
+        tabel_dp.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);  // Mengatur pemilihan satu baris
+    }
+        public AdminPage1(Profile P) {
+        initComponents();
+        settingTable();
+        viewData("");
+        viewDataProduk("");
+        this.p = P;
         // Menentukan mode pemilihan di tabel
         tabel_dp.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);  // Mengatur pemilihan satu baris
     }
@@ -94,11 +103,11 @@ public class AdminPage1 extends javax.swing.JFrame {
         layoutkiri.setBackground(new java.awt.Color(255, 204, 51));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_logo_kasir.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img/User_2.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Kasir Tof");
+        jLabel3.setText("ADMIN TOF");
 
         line.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -114,7 +123,7 @@ public class AdminPage1 extends javax.swing.JFrame {
         );
 
         bt_profile.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bt_profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos/img/Change User.png"))); // NOI18N
+        bt_profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img/Change User.png"))); // NOI18N
         bt_profile.setText("PROFILE");
         bt_profile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +132,7 @@ public class AdminPage1 extends javax.swing.JFrame {
         });
 
         bt_logout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bt_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos/img/Logout_1.png"))); // NOI18N
+        bt_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img/Logout_1.png"))); // NOI18N
         bt_logout.setText("LOGOUT");
         bt_logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,12 +155,12 @@ public class AdminPage1 extends javax.swing.JFrame {
                     .addGroup(layoutkiriLayout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addComponent(jLabel1)
-                        .addGap(33, 33, 33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3))
                     .addGroup(layoutkiriLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(line, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         layoutkiriLayout.setVerticalGroup(
             layoutkiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +179,7 @@ public class AdminPage1 extends javax.swing.JFrame {
                 .addComponent(bt_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(bt_logout)
-                .addContainerGap(495, Short.MAX_VALUE))
+                .addContainerGap(465, Short.MAX_VALUE))
         );
 
         getContentPane().add(layoutkiri, java.awt.BorderLayout.LINE_START);
@@ -180,7 +189,7 @@ public class AdminPage1 extends javax.swing.JFrame {
 
         pn_dasar.setBackground(new java.awt.Color(255, 255, 255));
 
-        pn_utama.setBackground(new java.awt.Color(255, 204, 255));
+        pn_utama.setBackground(new java.awt.Color(255, 153, 0));
         pn_utama.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 51));
@@ -201,7 +210,7 @@ public class AdminPage1 extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
         jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 102));
 
         bt_simpandu.setText("TAMBAH");
         bt_simpandu.addActionListener(new java.awt.event.ActionListener() {
@@ -436,13 +445,13 @@ public class AdminPage1 extends javax.swing.JFrame {
     private void bt_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_logoutActionPerformed
         this.dispose();
 
-        Login loginFrame = new Login();
+        Login1 loginFrame = new Login1();
         loginFrame.setVisible(true);
     }//GEN-LAST:event_bt_logoutActionPerformed
 
     private void bt_profileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_profileActionPerformed
         // TODO add your handling code here:
-        Profile profile = new Profile(); // Buat instance baru dari Profile
+        ProfilePage profile = new ProfilePage(); // Buat instance baru dari Profile
         profile.setUsername(CurrentUser.username); // Set username
         profile.setLevel(CurrentUser.level); // Set level to avoid NullPointerException
         profile.setVisible(true); // Tampilkan profil

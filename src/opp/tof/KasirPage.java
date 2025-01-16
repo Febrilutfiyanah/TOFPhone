@@ -13,24 +13,36 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 import login.Login;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.SwingUtilities;
 
 public class KasirPage extends javax.swing.JFrame {
-    
+
+    Profile p;
     private JDateChooser dateChooser; // Komponen date picker
     private JTable jTable; // Tabel untuk menampilkan laporan
+
     /**
+     *
      * Creates new form menuutama
      */
+
     public KasirPage() {
         initComponents();
+    }
+
+    public KasirPage(Profile P) {
+        initComponents();
+        this.p = P;
     }
 
     /**
@@ -57,7 +69,7 @@ public class KasirPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCart = new javax.swing.JTable();
         txt_produk = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         bt_hapus = new javax.swing.JButton();
@@ -105,7 +117,7 @@ public class KasirPage extends javax.swing.JFrame {
         layoutkiri.setBackground(new java.awt.Color(255, 204, 51));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_logo_kasir.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img/School Cafeteria.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -125,7 +137,7 @@ public class KasirPage extends javax.swing.JFrame {
         );
 
         bt_profile.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bt_profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos/img/Change User.png"))); // NOI18N
+        bt_profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img/Change User.png"))); // NOI18N
         bt_profile.setText("PROFILE");
         bt_profile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +146,7 @@ public class KasirPage extends javax.swing.JFrame {
         });
 
         bt_logout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bt_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos/img/Logout_1.png"))); // NOI18N
+        bt_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img/Logout_1.png"))); // NOI18N
         bt_logout.setText("LOGOUT");
         bt_logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,32 +167,32 @@ public class KasirPage extends javax.swing.JFrame {
             .addGroup(layoutkiriLayout.createSequentialGroup()
                 .addGroup(layoutkiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layoutkiriLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                        .addGap(72, 72, 72)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3))
                     .addGroup(layoutkiriLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(line, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layoutkiriLayout.setVerticalGroup(
             layoutkiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layoutkiriLayout.createSequentialGroup()
                 .addGroup(layoutkiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layoutkiriLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
+                        .addGap(48, 48, 48)
                         .addComponent(jLabel1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutkiriLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)))
+                        .addComponent(jLabel3)))
+                .addGap(18, 18, 18)
                 .addComponent(line, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
                 .addComponent(bt_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(bt_logout)
-                .addContainerGap(431, Short.MAX_VALUE))
+                .addContainerGap(337, Short.MAX_VALUE))
         );
 
         getContentPane().add(layoutkiri, java.awt.BorderLayout.LINE_START);
@@ -199,7 +211,7 @@ public class KasirPage extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1494, Short.MAX_VALUE)
+            .addGap(0, 1474, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +226,7 @@ public class KasirPage extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(255, 153, 204));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCart.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -222,7 +234,7 @@ public class KasirPage extends javax.swing.JFrame {
                 "ID", "NAMA PRODUK", "QTY", "HARGA"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblCart);
 
         txt_produk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -348,8 +360,8 @@ public class KasirPage extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bt_checkout)
-                            .addComponent(lbluangKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lbluangKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_checkout))))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -381,7 +393,7 @@ public class KasirPage extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(389, Short.MAX_VALUE))
+                .addContainerGap(372, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,7 +445,7 @@ public class KasirPage extends javax.swing.JFrame {
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -482,7 +494,7 @@ public class KasirPage extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)))
-                .addContainerGap(409, Short.MAX_VALUE))
+                .addContainerGap(389, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -529,7 +541,7 @@ public class KasirPage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1067, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(407, Short.MAX_VALUE))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -573,46 +585,19 @@ public class KasirPage extends javax.swing.JFrame {
 
     private void bt_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_logoutActionPerformed
         this.dispose();
-        
-     
-        Login loginFrame = new Login();
+
+        Login1 loginFrame = new Login1();
         loginFrame.setVisible(true);
     }//GEN-LAST:event_bt_logoutActionPerformed
 
     private void bt_profileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_profileActionPerformed
         // TODO add your handling code here:
-        Profile profile = new Profile(); // Buat instance baru dari Profile
+        ProfilePage profile = new ProfilePage(); // Buat instance baru dari Profile
         profile.setUsername(CurrentUser.username); // Gunakan CurrentUser untuk mendapatkan username yang sedang login
         profile.setVisible(true); // Tampilkan profil
         this.dispose(); // Tutup halaman saat ini jika perlu
     }//GEN-LAST:event_bt_profileActionPerformed
 
-    private void bt_checkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_checkoutActionPerformed
-        // TODO add your handling code here:
-     try {
-        // Ambil total harga dari label atau variabel
-        double totalHarga = Double.parseDouble(lblTotalHarga.getText().replace("Rp ", "").replace(",", "").trim());
-
-        // Ambil jumlah pembayaran dari text field
-        double jumlahBayar = Double.parseDouble(txtUangBayar.getText().trim());
-
-        // Panggil metode checkout
-        checkout(totalHarga, jumlahBayar);
-
-        // Reset form setelah checkout berhasil
-        txtUangBayar.setText("");
-        lbluangKembali.setText("Rp 0");
-        txt_produk.setText(""); // Mengosongkan input kode produk
-
-        // Bersihkan tabel transaksi jika perlu
-        ((DefaultTableModel) jTable1.getModel()).setRowCount(0);
-
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(this, "Masukkan angka yang valid untuk jumlah pembayaran!", "Error", JOptionPane.ERROR_MESSAGE);
-    } catch (Exception ex) {
-        JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
-    }//GEN-LAST:event_bt_checkoutActionPerformed
 
     private void txtUangBayarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUangBayarKeyReleased
         // TODO add your handling code here:
@@ -621,6 +606,8 @@ public class KasirPage extends javax.swing.JFrame {
 
     private void txtUangBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUangBayarActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_txtUangBayarActionPerformed
 
     private void bt_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_hapusActionPerformed
@@ -647,17 +634,17 @@ public class KasirPage extends javax.swing.JFrame {
                 String nama = R.getString("nama_produk");
                 int harga_jual = R.getInt("harga_jual");
 
-                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
                 boolean ada = false;
-                int rowCount = jTable1.getRowCount();
+                int rowCount = tblCart.getRowCount();
 
                 for (int i = 0; i < rowCount; i++) {
-                    Object value = jTable1.getValueAt(i, 0);
+                    Object value = tblCart.getValueAt(i, 0);
                     if (value != null) {
                         int id_produk = Integer.parseInt(value.toString());
                         if (id_produk == id) {
-                            int QTY = Integer.parseInt(jTable1.getValueAt(i, 2).toString()) + 1;
-                            jTable1.setValueAt(QTY, i, 2);
+                            int QTY = Integer.parseInt(tblCart.getValueAt(i, 2).toString()) + 1;
+                            tblCart.setValueAt(QTY, i, 2);
                             ada = true;
                             break;
                         }
@@ -671,7 +658,7 @@ public class KasirPage extends javax.swing.JFrame {
                     model.addRow(data);
                 }
 
-                updateTotalHarga();
+                updateharga();
                 endsKetikUangPembayaran();
             } else {
                 JOptionPane.showMessageDialog(this, "Produk dengan kode " + kode + " tidak ditemukan!", "Informasi", JOptionPane.INFORMATION_MESSAGE);
@@ -683,6 +670,21 @@ public class KasirPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_produkActionPerformed
 
+    private void bt_checkoutActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    // Tambahkan logika yang ingin dilakukan saat tombol "Checkout" diklik
+        // Ambil total harga dan jumlah bayar
+        System.out.println("Tombol Checkout ditekan!");
+
+        // Ambil total harga dari JLabel lblTotalHarga dan jumlah bayar dari JTextField txtUangBayar
+        String totalHargaText = lblTotalHarga.getText().replaceAll("[^0-9.]", "");  // Remove non-numeric characters
+        double totalHarga = Double.parseDouble(totalHargaText);  // Convert cleaned text to double
+
+        String jumlahBayarText = txtUangBayar.getText().replaceAll("[^0-9.]", "");  // Remove non-numeric characters
+        double jumlahBayar = Double.parseDouble(jumlahBayarText);  // Convert cleaned text to double
+
+        // Call checkout method
+        checkout(totalHarga, jumlahBayar);
+    }
     /**
      * @param args the command line arguments
      */
@@ -753,7 +755,6 @@ public class KasirPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
@@ -762,32 +763,33 @@ public class KasirPage extends javax.swing.JFrame {
     private javax.swing.JPanel layoutkanan;
     private javax.swing.JPanel layoutkiri;
     private javax.swing.JLabel lblTotalHarga;
-    private javax.swing.JLabel lbluangKembali;
+    private static javax.swing.JLabel lbluangKembali;
     private javax.swing.JPanel line;
     private javax.swing.JPanel pn_dasar;
     private javax.swing.JPanel pn_utama;
+    private javax.swing.JTable tblCart;
     private javax.swing.JTextField txtUangBayar;
     private javax.swing.JTextField txt_produk;
     // End of variables declaration//GEN-END:variables
 
-    private void updateTotalHarga() {
+    private void updateharga() {
         try {
             double total = 0;
-            int r = jTable1.getRowCount();
+            int r = tblCart.getRowCount();
             for (int i = 0; i < r; i++) {
-                double QTY = Double.parseDouble(jTable1.getValueAt(i, 2).toString());
-                double PRC = Double.parseDouble(jTable1.getValueAt(i, 3).toString());
+                double QTY = Double.parseDouble(tblCart.getValueAt(i, 2).toString());
+                double PRC = Double.parseDouble(tblCart.getValueAt(i, 3).toString());
                 total += (QTY * PRC);
             }
             lblTotalHarga.setText("Rp " + (long) total);
-            
+
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
     }
 
     private void delFromCart() {
-        int b = jTable1.getSelectedRow();
+        int b = tblCart.getSelectedRow();
         if (b != -1) {
             // Tampilkan dialog konfirmasi
             int confirm = JOptionPane.showConfirmDialog(
@@ -799,11 +801,11 @@ public class KasirPage extends javax.swing.JFrame {
 
             // Jika pengguna memilih "Yes"
             if (confirm == JOptionPane.YES_OPTION) {
-                DefaultTableModel m = (DefaultTableModel) jTable1.getModel();
+                DefaultTableModel m = (DefaultTableModel) tblCart.getModel();
                 m.removeRow(b); // Hapus baris yang dipilih
 
                 // Update total harga dan pembayaran
-                updateTotalHarga();
+                updateharga();
                 endsKetikUangPembayaran();
             }
         } else {
@@ -811,9 +813,8 @@ public class KasirPage extends javax.swing.JFrame {
         }
     }
 
-
     private void endsKetikUangPembayaran() {
-        int r = jTable1.getRowCount();
+        int r = tblCart.getRowCount();
         if (r > 0) {
             String lbl = lblTotalHarga.getText(); //Rp 12000
             String[] arrayHarga = lbl.split(" ");
@@ -823,102 +824,88 @@ public class KasirPage extends javax.swing.JFrame {
             if (!bayar.isEmpty()) {
                 long uangbayar = Long.parseLong(bayar);
                 long uangkembali = uangbayar - harga;
-                lbluangKembali.setText("Rp "+uangkembali); 
-                
-                if(uangbayar >= harga){
-                    bt_checkout.setEnabled(true); 
-                }else {
-                    bt_checkout.setEnabled(false); 
+                lbluangKembali.setText("Rp " + uangkembali);
+
+                if (uangbayar >= harga) {
+                    bt_checkout.setEnabled(true);
+                } else {
+                    bt_checkout.setEnabled(false);
                 }
-            }else{
-                lbluangKembali.setText("Rp "+0);
-                bt_checkout.setEnabled(false); 
+            } else {
+                lbluangKembali.setText("Rp " + 0);
+                bt_checkout.setEnabled(false);
             }
         }
     }
-    
- public void checkout(double totalHarga, double jumlahBayar) {
-    try {
-        // Membuat koneksi ke database
-        Connection k = koneksi.konek(); // Asumsi metode koneksi Anda
 
-        // Validasi jumlah bayar
-        if (jumlahBayar < totalHarga) {
-            JOptionPane.showMessageDialog(null, "Jumlah pembayaran tidak mencukupi!");
-            return;
-        }
+    public void checkout(double totalHarga, double jumlahBayar) {
+        try {
+    Connection K = koneksi.konek();
+    K.setAutoCommit(false);
 
-        // Mengambil waktu transaksi dengan LocalDateTime dan mengonversinya ke Timestamp
-        LocalDateTime waktuSekarang = LocalDateTime.now();
-        Timestamp waktuTransaksi = Timestamp.valueOf(waktuSekarang);
-        Date tanggalTransaksi = Date.valueOf(waktuSekarang.toLocalDate()); // Menggunakan hanya tanggal
+    // Insert main transaction
+    SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
+    String tgl = SDF.format(new Date());
+    String Q = "INSERT INTO transaksi (tanggal, kasir_id) VALUES (?, '112')";  // Kasir ID hardcoded, sesuaikan jika perlu
 
-        // Ambil ID customer (misalnya, dari user yang sedang login)
-        int customerId = CurrentUser.getId(); // Misalnya menggunakan CurrentUser untuk mendapatkan ID customer
+    PreparedStatement PS = K.prepareStatement(Q, Statement.RETURN_GENERATED_KEYS);
+    PS.setString(1, tgl);
+    PS.executeUpdate();
 
-        // SQL untuk memasukkan data ke tabel transaksi
-        String sqlTransaksi = "INSERT INTO transaksi (tanggal, customer) VALUES (?, ?)";
-        PreparedStatement pstTransaksi = k.prepareStatement(sqlTransaksi, Statement.RETURN_GENERATED_KEYS);
-
-        // Set parameter SQL untuk transaksi
-        pstTransaksi.setDate(1, tanggalTransaksi);
-        pstTransaksi.setInt(2, customerId);
-
-        // Eksekusi pernyataan untuk transaksi
-        int rowsInserted = pstTransaksi.executeUpdate();
-
-        if (rowsInserted > 0) {
-            // Mendapatkan ID transaksi yang baru dimasukkan
-            ResultSet rs = pstTransaksi.getGeneratedKeys();
-            if (rs.next()) {
-                int transaksiId = rs.getInt(1); // ID transaksi yang baru
-
-                // Menambahkan detail transaksi ke tabel transaksi_detail
-                String sqlDetail = "INSERT INTO transaksi_detail (id_transaksi, id_produk, qty, tanggal_transaksi, harga) VALUES (?, ?, ?, ?, ?)";
-                PreparedStatement pstDetail = k.prepareStatement(sqlDetail);
-
-                // Menyimpan detail transaksi
-                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-                for (int i = 0; i < model.getRowCount(); i++) {
-                    int idProduk = (int) model.getValueAt(i, 0);
-                    int qty = (int) model.getValueAt(i, 2);
-                    long harga = (long) model.getValueAt(i, 3);
-
-                    pstDetail.setInt(1, transaksiId);
-                    pstDetail.setInt(2, idProduk);
-                    pstDetail.setInt(3, qty);
-                    pstDetail.setDate(4, tanggalTransaksi);
-                    pstDetail.setLong(5, harga);
-
-                    pstDetail.addBatch(); // Menambahkan query ke batch
-                }
-
-                // Menjalankan batch insert untuk detail transaksi
-                int[] affectedRows = pstDetail.executeBatch();
-
-                // Jika batch berhasil dijalankan
-                JOptionPane.showMessageDialog(null, "Transaksi berhasil disimpan!");
-            }
-        }
-
-        // Hitung kembalian
-        double kembalian = jumlahBayar - totalHarga;
-        lbluangKembali.setText("Rp " + String.format("%,.2f", kembalian));
-
-        // Reset form setelah checkout berhasil
-        txtUangBayar.setText("");
-        lbluangKembali.setText("Rp 0");
-        txt_produk.setText(""); // Mengosongkan input kode produk
-        ((DefaultTableModel) jTable1.getModel()).setRowCount(0); // Bersihkan tabel transaksi jika perlu
-
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + e.getMessage());
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + e.getMessage());
+    // Get transaction ID
+    ResultSet RS = PS.getGeneratedKeys();
+    int transactionId = 0;
+    if (RS.next()) {
+        transactionId = RS.getInt(1);
     }
+
+    // Insert transaction details
+    String detailQuery = "INSERT INTO transaksi_detail (id_transaksi, id_produk, qty, tanggal_transaksi, harga) VALUES (?, ?, ?, ?, ?)";
+    PreparedStatement PSDetail = K.prepareStatement(detailQuery);
+
+    int row = tblCart.getRowCount();
+    for (int i = 0; i < row; i++) {
+        int productId = Integer.parseInt(tblCart.getValueAt(i, 0).toString());
+        int qty = Integer.parseInt(tblCart.getValueAt(i, 2).toString());
+        double price = Double.parseDouble(tblCart.getValueAt(i, 3).toString());
+
+        PSDetail.setInt(1, transactionId);
+        PSDetail.setInt(2, productId);
+        PSDetail.setInt(3, qty);
+        PSDetail.setString(4, tgl);
+        PSDetail.setDouble(5, price);
+        PSDetail.executeUpdate();
+    }
+
+    K.commit();
+
+    // Show success message
+    JOptionPane.showMessageDialog(this, "Transaction successful!");
+
+    // Show Nota dialog
+    Nota notaDialog = new Nota(this, true);
+    notaDialog.setMODEL((DefaultTableModel) tblCart.getModel()); // Pass the model
+    notaDialog.setTotalHarga(lblTotalHarga.getText()); // Pass total price
+    notaDialog.setUangPembayaran(txtUangBayar.getText()); // Pass payment amount
+    notaDialog.setUangKembali(lbluangKembali.getText()); // Calculate and pass change
+
+    // Use pack() to fit the dialog size to its components
+    SwingUtilities.invokeLater(() -> {
+        notaDialog.pack();
+        notaDialog.setVisible(true);
+    });
+
+    // Clear cart
+    clearCart();
+
+} catch (SQLException e) {
+    e.printStackTrace();
+    JOptionPane.showMessageDialog(this, "Transaction failed: " + e.getMessage());
 }
 
-    
+
+    }
+
     public void loadLaporanKeuanganHarian(java.util.Date tanggalDipilih) {
         try {
             System.out.println("Memulai proses loadLaporanKeuanganHarian...");
@@ -962,7 +949,6 @@ public class KasirPage extends javax.swing.JFrame {
 
     }
 
-
 //    public void bill()
 //    {
 //        String total = lblTotalHarga.getText();
@@ -980,35 +966,50 @@ public class KasirPage extends javax.swing.JFrame {
 //         //Heading
 //          txtbill.setText(txtbill.getText() + "Product" + "\t" + "Price" + "\t" + "Amount" + "\n"  );
 //    }
-    
-    private static class Frameprofil {
+//    private static class dateChooser {
+//
+//        private static java.util.Date getDate() {
+//            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//        }
+//
+//        public dateChooser() {
+//        }
+//    }
 
-        public Frameprofil() {
-        }
+    private void clearCart() {
+        DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
+        model.setRowCount(0);
+        lblTotalHarga.setText("Rp 0");
+        jTextField1.setText("");
+        txtUangBayar.setText("");
+        lbluangKembali.setText("Rp 0");
+        txt_produk.requestFocus();
+    }
 
-        private void setVisible(boolean b) {
+    private void removeProductFromCart() {
+        int idx = tblCart.getSelectedRow();
+        if (idx != -1) {
+            DefaultTableModel m = (DefaultTableModel) tblCart.getModel();
+            m.removeRow(idx);
+            updateharga();
+        } else {
+            JOptionPane.showMessageDialog(this, "Anda belum memilihi data");
         }
     }
 
-    private static class profile {
+    private void enableCheckoutBtn(boolean enable) {
+        bt_checkout.setEnabled(enable);
 
-        public profile() {
-        }
-
-        private void setVisible(boolean b) {
-        }
-
-        private void revalidate() {
-        }
     }
 
-    private static class dateChooser {
-
-        private static java.util.Date getDate() {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        public dateChooser() {
-        }
+    private String calculateChange(String totalHarga, String uangPembayaran) {
+        try {
+        double total = Double.parseDouble(totalHarga);
+        double bayar = Double.parseDouble(uangPembayaran);
+        double kembali = bayar - total;
+        return String.format("%.2f", kembali);
+    } catch (NumberFormatException e) {
+        return "Invalid amount";
+    }
     }
 }

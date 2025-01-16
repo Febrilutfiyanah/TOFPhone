@@ -5,18 +5,22 @@
 package opp.tof;
 
 import login.Login;
-
+    
 /**
  *
  * @author ASUS
  */
 public class OwnerPage extends javax.swing.JFrame {
-
+    Profile p;
     /**
      * Creates new form OwnerPage
      */
     public OwnerPage() {
         initComponents();
+    }
+    public OwnerPage(Profile P) {
+        initComponents();
+        this.p = P;
     }
 
     /**
@@ -55,6 +59,8 @@ public class OwnerPage extends javax.swing.JFrame {
         bt_profile = new javax.swing.JButton();
         bt_logout = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -243,7 +249,7 @@ public class OwnerPage extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 204, 51));
 
         bt_profile.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bt_profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos/img/Change User.png"))); // NOI18N
+        bt_profile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img/Change User.png"))); // NOI18N
         bt_profile.setText("PROFILE");
         bt_profile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,7 +258,7 @@ public class OwnerPage extends javax.swing.JFrame {
         });
 
         bt_logout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bt_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos/img/Logout_1.png"))); // NOI18N
+        bt_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img/Logout_1.png"))); // NOI18N
         bt_logout.setText("LOGOUT");
         bt_logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,7 +267,23 @@ public class OwnerPage extends javax.swing.JFrame {
         });
 
         jLabel1.setBackground(new java.awt.Color(255, 153, 51));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos/img/School Cafeteria.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img/User_2.png"))); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel11.setText("OWNER");
+
+        jPanel3.setPreferredSize(new java.awt.Dimension(313, 4));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 313, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -271,24 +293,37 @@ public class OwnerPage extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(bt_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(bt_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bt_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(101, 101, 101))
+                        .addGap(22, 22, 22)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel11)
+                        .addGap(8, 8, 8))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(193, 193, 193)
                 .addComponent(bt_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(bt_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -322,7 +357,7 @@ public class OwnerPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 2225, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 2225, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,7 +369,7 @@ public class OwnerPage extends javax.swing.JFrame {
 
     private void bt_profileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_profileActionPerformed
         // TODO add your handling code here:
-        Profile profile = new Profile(); // Buat instance baru dari Profile
+        ProfilePage profile = new ProfilePage(); // Buat instance baru dari Profile
         profile.setUsername(CurrentUser.username); // Gunakan CurrentUser untuk mendapatkan username yang sedang login
         profile.setVisible(true); // Tampilkan profil
         this.dispose(); // Tutup halaman saat ini jika perlu
@@ -395,6 +430,7 @@ public class OwnerPage extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooser6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -407,6 +443,7 @@ public class OwnerPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;

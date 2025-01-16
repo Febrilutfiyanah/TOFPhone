@@ -25,17 +25,25 @@ import opp.tof.OwnerPage;
 //import main.CurrentUser;
 //import main.KasirPage;
 //import main.OwnerPage;
+
 /**
  *
  * @author binta
  */
 public class Login1 extends javax.swing.JFrame {
 
+    Profile p;
+
     /**
      * Creates new form NewJFrame
      */
     public Login1() {
         initComponents();
+    }
+
+    public Login1(Profile P) {
+        initComponents();
+        this.p = P;
     }
 
     /**
@@ -56,6 +64,7 @@ public class Login1 extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         bt_login = new javax.swing.JButton();
         bt_reset = new javax.swing.JButton();
+        jcshowpassword = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,6 +111,13 @@ public class Login1 extends javax.swing.JFrame {
             }
         });
 
+        jcshowpassword.setText("show password");
+        jcshowpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcshowpasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -111,15 +127,17 @@ public class Login1 extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(bt_login, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                                .addComponent(bt_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3)
-                            .addComponent(txtUsername)
-                            .addComponent(jLabel4)
-                            .addComponent(txtPassword))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcshowpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(bt_login, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                                    .addComponent(bt_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel3)
+                                .addComponent(txtUsername)
+                                .addComponent(jLabel4)
+                                .addComponent(txtPassword)))
                         .addGap(0, 166, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -136,14 +154,16 @@ public class Login1 extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jcshowpassword)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_login)
                     .addComponent(bt_reset))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pos/img/tof_1-removebg-preview.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img/tof_1-removebg-preview.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -185,10 +205,12 @@ public class Login1 extends javax.swing.JFrame {
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
+        txtPassword.requestFocus();
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
+        LoginNow();
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void bt_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_loginActionPerformed
@@ -201,6 +223,15 @@ public class Login1 extends javax.swing.JFrame {
         txtUsername.setText("");
         txtPassword.setText("");
     }//GEN-LAST:event_bt_resetActionPerformed
+
+    private void jcshowpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcshowpasswordActionPerformed
+        // TODO add your handling code here:
+        if (jcshowpassword.isSelected()) {
+            txtPassword.setEchoChar((char) 0);
+        } else {
+            txtPassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jcshowpasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,104 +278,99 @@ public class Login1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JCheckBox jcshowpassword;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
-     
-private void tulisLog(String pesan, Exception e) {
-    try {
-        // Mendapatkan timestamp dari log
-        String timestamp = java.time.LocalDateTime.now().toString();
-        String logMessage = "[" + timestamp + "] " + pesan;
 
-        // Jika ada exception (seperti SQLException), kita tambahkan stack trace
-        if (e != null) {
-            StringBuilder stackTrace = new StringBuilder();
-            for (StackTraceElement element : e.getStackTrace()) {
-                stackTrace.append(element.toString()).append(System.lineSeparator());
+    private void tulisLog(String pesan, Exception e) {
+        try {
+            // Mendapatkan timestamp dari log
+            String timestamp = java.time.LocalDateTime.now().toString();
+            String logMessage = "[" + timestamp + "] " + pesan;
+
+            // Jika ada exception (seperti SQLException), kita tambahkan stack trace
+            if (e != null) {
+                StringBuilder stackTrace = new StringBuilder();
+                for (StackTraceElement element : e.getStackTrace()) {
+                    stackTrace.append(element.toString()).append(System.lineSeparator());
+                }
+                logMessage += "\nStack Trace: " + stackTrace.toString();
             }
-            logMessage += "\nStack Trace: " + stackTrace.toString();
+
+            System.out.println("Logging to file: " + logMessage); // Tambahkan debug output
+
+            // Menulis log ke file menggunakan Functions.logActivity
+            Functions.logActivity(logMessage);
+        } catch (Exception logException) {
+            System.err.println("Gagal menulis ke Log.txt: " + logException.getMessage());
         }
-
-        System.out.println("Logging to file: " + logMessage); // Tambahkan debug output
-
-        // Menulis log ke file menggunakan Functions.logActivity
-        Functions.logActivity(logMessage);
-    } catch (Exception logException) {
-        System.err.println("Gagal menulis ke Log.txt: " + logException.getMessage());
     }
-}
 
+    private void LoginNow() {
+        String user = txtUsername.getText();
+        String pass = new String(txtPassword.getPassword());
 
+        String q = "SELECT * FROM user WHERE username='" + user + "' AND password='" + pass + "'";
 
-private void LoginNow() {
-    String user = txtUsername.getText();
-    String pass = new String(txtPassword.getPassword());
+        try {
+            Connection K = koneksi.konek();
+            Statement S = K.createStatement();
+            ResultSet R = S.executeQuery(q);
 
-    String q = "SELECT * FROM user WHERE username='" + user + "' AND password='" + pass + "'";
+            int x = 0;
 
-    try {
-        Connection K = koneksi.konek();
-        Statement S = K.createStatement();
-        ResultSet R = S.executeQuery(q);
+            while (R.next()) {
+                int id = R.getInt("id");
+                String fullname = R.getString("fullname");
+                String username = R.getString("username");
+                String password = R.getString("password");
+                String level = R.getString("level"); // Mengambil level dari database
+                CurrentUser.setUsername(user); // Simpan username di CurrentUser
+                CurrentUser.setLevel(level); // Simpan level di CurrentUser
+                x++;
+                System.out.println("Login berhasil untuk user: " + username + " dengan level: " + level); // Log berhasil
+            }
 
-        int x = 0;
-
-        while (R.next()) {                
-            int id = R.getInt("id");
-            String fullname = R.getString("fullname");
-            String username = R.getString("username");
-            String password = R.getString("password");
-            String level = R.getString("level"); // Mengambil level dari database
-            CurrentUser.setUsername(user); // Simpan username di CurrentUser
-            CurrentUser.setLevel(level); // Simpan level di CurrentUser
-            x++;
-            System.out.println("Login berhasil untuk user: " + username + " dengan level: " + level); // Log berhasil
-        }
-
-        if (x > 0) {
-            JOptionPane.showMessageDialog(this, "Login berhasil!");
-            if (CurrentUser.getLevel().equals("admin")) {
-                AdminPage1 ap = new AdminPage1();
-                ap.setVisible(true);
-                this.setVisible(false);
-                ap.setExtendedState(Frame.MAXIMIZED_BOTH);
-            } else if (CurrentUser.getLevel().equals("kasir")) {
-                KasirPage kp = new KasirPage();
-                kp.setVisible(true);
-                this.setVisible(false);
-                kp.setExtendedState(Frame.MAXIMIZED_BOTH);
-            } else if (CurrentUser.getLevel().equals("owner")) {
-                OwnerPage op = new OwnerPage();
-                op.setVisible(true);
-                this.setVisible(false);
-                op.setExtendedState(Frame.MAXIMIZED_BOTH);
+            if (x > 0) {
+                JOptionPane.showMessageDialog(this, "Login berhasil!");
+                if (CurrentUser.getLevel().equals("admin")) {
+                    AdminPage1 ap = new AdminPage1(p);
+                    ap.setVisible(true);
+                    this.setVisible(false);
+                    ap.setExtendedState(Frame.MAXIMIZED_BOTH);
+                } else if (CurrentUser.getLevel().equals("kasir")) {
+                    KasirPage kp = new KasirPage(p);
+                    kp.setVisible(true);
+                    this.setVisible(false);
+                    kp.setExtendedState(Frame.MAXIMIZED_BOTH);
+                } else if (CurrentUser.getLevel().equals("owner")) {
+                    OwnerPage op = new OwnerPage(p);
+                    op.setVisible(true);
+                    this.setVisible(false);
+                    op.setExtendedState(Frame.MAXIMIZED_BOTH);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Level pengguna tidak dikenal!");
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Level pengguna tidak dikenal!");
+                String errorMsg = "Username atau password salah!";
+                JOptionPane.showMessageDialog(this, errorMsg);
+                System.out.println(errorMsg); // Log kesalahan ke konsol
+                tulisLog(errorMsg, null); // Tulis ke Log.txt
             }
-        } else {
-            String errorMsg = "Username atau password salah!";
-            JOptionPane.showMessageDialog(this, errorMsg);
-            System.out.println(errorMsg); // Log kesalahan ke konsol
-            tulisLog(errorMsg, null); // Tulis ke Log.txt
-        }
 
-    } catch (SQLException e) {
-        String sqlErrorMsg = "Terjadi kesalahan: " + e.getMessage();
-        String errorLocation = "Kesalahan pada baris: " + e.getStackTrace()[0].toString(); // Menambahkan lokasi kesalahan
-        String fullErrorMsg = sqlErrorMsg + "\n" + errorLocation;
-        JOptionPane.showMessageDialog(this, fullErrorMsg);
-        System.err.println(fullErrorMsg); // Cetak ke konsol
-        tulisLog(fullErrorMsg, e); // Tulis ke Log.txt dengan stack trace
+        } catch (SQLException e) {
+            String sqlErrorMsg = "Terjadi kesalahan: " + e.getMessage();
+            String errorLocation = "Kesalahan pada baris: " + e.getStackTrace()[0].toString(); // Menambahkan lokasi kesalahan
+            String fullErrorMsg = sqlErrorMsg + "\n" + errorLocation;
+            JOptionPane.showMessageDialog(this, fullErrorMsg);
+            System.err.println(fullErrorMsg); // Cetak ke konsol
+            tulisLog(fullErrorMsg, e); // Tulis ke Log.txt dengan stack trace
+        }
     }
-}
 
     private void tulisLog(String errorMsg, Object object) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-
-
-
 
 }
